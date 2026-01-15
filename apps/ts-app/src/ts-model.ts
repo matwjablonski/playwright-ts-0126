@@ -1,50 +1,39 @@
-// 1) Zamodeluj typ Todo
-// Wymagane pola:
-// - id: number
-// - title: string
-// - done: boolean
 export type Todo = {
-  // TODO
+  id: number;
+  title: string;
+  done: boolean;
 };
 
-// 2) Zwróć liczbę zadań, które są DONE
 export function countDone(todos: Todo[]): number {
-  // TODO
-
-  // filter()
-
-  return 0;
+  const doneCount = todos.filter(todo => todo.done).length;
+  return doneCount;
 }
 
-// 3) Zwróć nową tablicę zadań, które NIE są DONE
-// (bez modyfikowania oryginalnej tablicy)
 export function getOpenTodos(todos: Todo[]): Todo[] {
-  // TODO
-
-  // filter()
-  return [];
+  const unDoneTodos = todos.filter(todo => !todo.done)
+  return unDoneTodos;
 }
 
-// 4) ustaw wszystkie todo z danym id na przeciwną wartość done
-// Jeśli nie ma takiego id -> zwróć oryginalną tablicę (bez zmian)
 export function toggleTodo(todos: Todo[], id: number): Todo[] {
-  // TODO
+  return todos.map(todo => {
+    if (todo.id === id) {
+      return {
+        title: todo.title,
+        id: todo.id,
+        done: !todo.done
+      }
+    }
 
-  // map(item => {})
-
-  return todos;
+    return todo;
+  })
 }
 
-// 5) Generyk: znajdź element po id w dowolnej tablicy obiektów z id:number
-// Jeśli nie znaleziono -> undefined
 export function findById<T extends { id: number }>(
   items: T[],
   id: number
 ): T | undefined {
-  // TODO
-
-  // find()
-  return undefined;
+  const foundItem = items.find(item => item.id === id);
+  return foundItem;
 }
 
 export const sampleTodos: Todo[] = [
@@ -53,7 +42,9 @@ export const sampleTodos: Todo[] = [
   { id: 3, title: 'Call client', done: false },
 ];
 
+const result = findById<Todo>(sampleTodos, 5)
 
+console.log(result)
 // przykład użycia
 
 const array1 = [1, 2, 3, 4, 5];

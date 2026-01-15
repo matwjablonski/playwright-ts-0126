@@ -14,8 +14,10 @@ const stringFromNumber3 = `${number}`;
 const stringFromNumber4 = "" + number;
 
 export function normalizeId(id: Id): string {
-  // TODO
-  return '';
+  if (typeof id === 'number') {
+    return id.toString();
+  }
+  return id;
 }
 
 // 5.2) Union obiektów (dwa warianty)
@@ -39,6 +41,29 @@ export type Contact = EmailContact | PhoneContact;
  * Użyj type guardu po polu `kind`.
  */
 export function describeContact(contact: Contact): string {
-  // TODO
-  return '';
+  if (contact.kind === 'email') {
+    return `Email: ${contact.email}`;
+  }
+  return `Phone: ${contact.phone}`;
 }
+
+const pro = new Promise((reject, resolve) => {
+  setTimeout(() => {
+    resolve('Done');
+  }, 1000);
+});
+
+pro.then((res1) => {
+  return res1;
+}).then((res2) => {
+  return res2;
+}).catch();
+
+const res1 = await pro;
+const res2 = await res1;
+
+class Helpers {
+  static normalizeId(id: Id): string {}
+}
+
+Helpers.normalizeId(5);
