@@ -32,7 +32,14 @@ export class LoginForm extends Component {
     // Clear error when user starts typing
     if (this.errors && this.errors[name]) {
       this.errors[name] = null;
-      this.rerender();
+      // Don't call rerender here - it causes focus loss
+      // Instead, manually find and remove the error message and styling
+      const errorElement = document.querySelector(`[data-error-for="${name}"]`);
+      if (errorElement) {
+        errorElement.remove();
+      }
+      // Remove is-danger class from the input field
+      event.target.classList.remove('is-danger');
     }
   }
 
@@ -54,6 +61,7 @@ export class LoginForm extends Component {
   }
 
   handleSubmit() {
+    console.log('Submitting login form...');
     if (this.isLoading) return;
     
     if (!this.validateForm()) {
@@ -84,7 +92,10 @@ export class LoginForm extends Component {
     
     return this.createElement(
       'p',
-      { class: 'help is-danger' },
+      { 
+        class: 'help is-danger',
+        'data-error-for': fieldName
+      },
       [this.errors[fieldName]]
     );
   }

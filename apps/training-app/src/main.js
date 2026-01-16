@@ -133,3 +133,5 @@ function initApp() {
 
 // Start the application
 initApp();
+
+await fetch('https://catfact.ninja/fact')

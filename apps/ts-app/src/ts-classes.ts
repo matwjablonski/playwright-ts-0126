@@ -8,7 +8,23 @@
  *   - getValue(): number -> zwraca aktualną wartość
  */
 export class Counter {
-  // TODO
+  private value: number;
+  
+  constructor(initialValue: number = 0) {
+    this.value = initialValue;
+  }
+
+  inc(): void {
+    this.value += 1;
+  }
+
+  dec(): void {
+    this.value -= 1;
+  }
+
+  getValue(): number {
+    return this.value;
+  }
 }
 
 /**
@@ -21,7 +37,19 @@ export class Counter {
  *   - toFahrenheit(): number  -> C * 9/5 + 32
  */
 export class Temperature {
-  // TODO
+  private celsius: number;
+
+  constructor(initialTemperatureInC: number) {
+    this.celsius = initialTemperatureInC;
+  }
+
+  getCelsius(): number {
+    return this.celsius;
+  }
+
+  toFahrenheit(): number {
+    return this.celsius * 9 / 5 + 32;
+  }
 }
 
 /**
@@ -37,7 +65,21 @@ export class Temperature {
  *   - rename nie może ustawić pustego stringa (''), w takim wypadku rzuca Error
  */
 export class User {
-  // TODO
+  readonly id: number;
+  name: string;
+
+  constructor(id: number, name: string) {
+    this.id = id;
+    this.name = name;
+  }
+
+  rename(newName: string): void {
+    if (!newName) {
+      throw new Error("Name cannot be empty");
+    }
+
+    this.name = newName;
+  }
 }
 
 /**
@@ -48,5 +90,13 @@ export class User {
  *   - generate(): number -> zwraca kolejne id (1,2,3,...)
  */
 export class IdGenerator {
-  // TODO
+  static #nextId: number = 1;
+
+  static generate(): number {
+    return this.#nextId++;
+  }
 }
+
+IdGenerator.generate(); // 1
+IdGenerator.generate(); // 2
+IdGenerator.generate(); // 3

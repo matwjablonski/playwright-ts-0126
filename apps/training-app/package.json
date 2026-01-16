@@ -15,6 +15,9 @@
     "test:debug": "echo 'Add Playwright debug mode here'"
   },
   "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.8",
+    "playwright": "^1.57.0",
     "vite": "^6.3.5"
   },
   "dependencies": {
@@ -22,7 +25,7 @@
   },
   "keywords": [
     "todo",
-    "javascript", 
+    "javascript",
     "typescript",
     "training",
     "playwright",

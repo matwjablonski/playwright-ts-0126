@@ -8,5 +8,5 @@ Mój email: mail@mateuszjablonski.com
 ## Dodatkowe materiały
 
 - [Agenda](./materials/agenda.md)
-- [Prezentacja](./materials/presentation.pdf)
+- [Prezentacja](./materials/automatyzacja-testow-funkcjonalnych-z-playwright-typescript.pdf)
 - [Materiały dodatkowe](./materials/additional.md)
